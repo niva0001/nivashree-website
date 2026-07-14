@@ -15,8 +15,8 @@ function Contact() {
         </p>
 
         <div className="mt-6">
-          <p>📞 Phone: Your business number</p>
-          <p>📧 Email: Your business email</p>
+          <p>📞 Phone: 8227885546 </p>
+          <p>📧 Email: nivashreemasala@gmail.com </p>
         </div>
       </div>
     </section>
