@@ -39,12 +39,12 @@ function Recipes() {
                   {recipe.description}
                 </p>
 
-                <Link
-                  to="/recipes"
-                  className="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition"
-                >
-                  View Recipe →
-                </Link>
+          <Link
+             to={`/recipes/${recipe.name.toLowerCase().replaceAll(" ", "-")}`}
+              className="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition"
+>
+  View Recipe →
+</Link>
 
               </div>
             </div>
