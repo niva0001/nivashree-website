@@ -1,63 +1,98 @@
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import recipes from "../data/recipes";
+import SEO from "../components/SEO";
 
 function Recipes() {
-  const recipes = [
-    {
-      name: "Sabudana Khichdi",
-      slug: "sabudana-khichdi",
-      description:
-        "A delicious vrat recipe made with premium Nivashree Sabudana, peanuts, spices and fresh ingredients.",
-    },
-    {
-      name: "Sabudana Kheer",
-      slug: "sabudana-kheer",
-      description:
-        "A traditional sweet recipe prepared with milk, dry fruits and premium quality sabudana.",
-    },
-  ];
-
   return (
-    <section className="pt-32 min-h-screen bg-orange-50 px-6">
-      <div className="max-w-6xl mx-auto">
+    <>
+      <SEO
+        title="Sabudana Recipes | Nivashree Premium Recipes"
+        description="Discover delicious Indian recipes made with Nivashree Premium Sabudana including Sabudana Kheer, Sabudana Khichdi, Sabudana Vada and more."
+      />
 
-        <h1 className="text-4xl font-bold text-green-700 text-center mb-8">
-          Nivashree Recipes
-        </h1>
+      <section className="min-h-screen bg-gradient-to-b from-green-50 to-white py-20 px-6">
 
-        <p className="text-center text-gray-600 mb-10 text-lg">
-          Discover delicious recipes made with Nivashree Premium Sabudana.
-        </p>
+        <div className="max-w-7xl mx-auto">
 
-        <div className="grid md:grid-cols-2 gap-8">
+          {/* Heading */}
+          <motion.div
+            initial={{ opacity: 0, y: -40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
 
-          {recipes.map((recipe) => (
-            <div
-              key={recipe.slug}
-              className="bg-white rounded-xl shadow-lg p-6"
-            >
+            <h1 className="text-5xl font-extrabold text-green-800">
+              Delicious Recipes
+            </h1>
 
-              <h2 className="text-2xl font-bold text-green-700 mb-3">
-                {recipe.name}
-              </h2>
+            <p className="mt-4 text-lg text-gray-600">
+              Cook authentic Indian recipes with Nivashree products.
+            </p>
 
-              <p className="text-gray-600 mb-5">
-                {recipe.description}
-              </p>
+          </motion.div>
 
-              <Link
-                to={`/recipes/${recipe.slug}`}
-                className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700"
+
+          {/* Recipes Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+
+
+            {recipes.map((recipe, index) => (
+
+              <motion.div
+                key={recipe.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  duration: 0.6,
+                  delay: index * 0.1
+                }}
+                viewport={{ once: true }}
+                className="bg-white rounded-3xl shadow-xl overflow-hidden"
               >
-                View Recipe
-              </Link>
 
-            </div>
-          ))}
+                <img
+                  src={recipe.image}
+                  alt={recipe.name}
+                  className="w-full h-72 object-cover"
+                />
+
+
+                <div className="p-6">
+
+                  <h2 className="text-2xl font-bold text-green-800">
+                    {recipe.name}
+                  </h2>
+
+
+                  <p className="mt-3 text-gray-600">
+                    {recipe.description}
+                  </p>
+
+
+                  <Link
+                    to={`/recipes/${recipe.name.toLowerCase().replaceAll(" ", "-")}`}
+                    className="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold"
+                  >
+                    View Recipe →
+                  </Link>
+
+
+                </div>
+
+              </motion.div>
+
+            ))}
+
+
+          </div>
 
         </div>
 
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 

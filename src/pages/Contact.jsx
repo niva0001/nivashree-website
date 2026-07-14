@@ -1,25 +1,49 @@
+import SEO from "../components/SEO";
+
 function Contact() {
   return (
-    <section className="pt-32 min-h-screen bg-green-50 px-6">
-      <div className="max-w-5xl mx-auto">
-        <h1 className="text-4xl font-bold text-green-700 mb-6">
-          Contact Nivashree Masala
-        </h1>
+    <>
+      <SEO
+        title="Contact Nivashree Masala | Get In Touch With Us"
+        description="Contact Nivashree Masala for product enquiries, dealership opportunities, distributor support and customer assistance."
+      />
 
-        <p className="text-lg text-gray-700 mb-4">
-          For product enquiries, dealership, and business support, contact us.
-        </p>
+      <section className="pt-32 min-h-screen bg-green-50 px-6">
 
-        <p className="text-lg text-gray-700">
-          We are happy to connect with retailers, distributors, and customers.
-        </p>
+        <div className="max-w-5xl mx-auto">
 
-        <div className="mt-6">
-          <p>📞 Phone: 8227885546 </p>
-          <p>📧 Email: nivashreemasala@gmail.com </p>
+          <h1 className="text-4xl font-bold text-green-700 mb-6">
+            Contact Nivashree Masala
+          </h1>
+
+
+          <p className="text-lg text-gray-700 mb-4">
+            For product enquiries, dealership, and business support, contact us.
+          </p>
+
+
+          <p className="text-lg text-gray-700">
+            We are happy to connect with retailers, distributors, and customers.
+          </p>
+
+
+          <div className="mt-6">
+
+            <p>
+              📞 Phone: 8227885546
+            </p>
+
+            <p>
+              📧 Email: nivashreemasala@gmail.com
+            </p>
+
+          </div>
+
+
         </div>
-      </div>
-    </section>
+
+      </section>
+    </>
   );
 }
 
