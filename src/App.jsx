@@ -7,7 +7,9 @@ import Products from "./pages/Products";
 import Recipes from "./pages/Recipes";
 import ProductDetails from "./pages/ProductDetails";
 import RecipeDetails from "./pages/RecipeDetails";
-
+import About from "./pages/About";
+import Dealer from "./pages/Dealer";
+import Contact from "./pages/Contact";
 function App() {
   return (
     <BrowserRouter>
@@ -31,7 +33,11 @@ function App() {
           <Route
             path="/recipes/:recipeName"
             element={<RecipeDetails />}
-          />
+          /><Route path="/about" element={<About />} />
+
+<Route path="/dealer" element={<Dealer />} />
+
+<Route path="/contact" element={<Contact />} />
         </Routes>
       </Layout>
     </BrowserRouter>
