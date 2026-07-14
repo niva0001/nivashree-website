@@ -1,117 +1,64 @@
 import { Link } from "react-router-dom";
 
-import kheer from "../assets/recipes/sabudana-kheer.jpg";
-import khichdi from "../assets/recipes/sabudana-khichdi.jpg";
-import vada from "../assets/recipes/sabudana-vada.jpg";
-import jeeraRice from "../assets/recipes/jeera-rice.jpg";
-
-
 function Recipes() {
-
   const recipes = [
     {
-      name: "Creamy Sabudana Kheer",
-      image: kheer,
-      time: "25 Minutes",
-      link: "sabudana-kheer",
-    },
-
-    {
       name: "Sabudana Khichdi",
-      image: khichdi,
-      time: "20 Minutes",
-      link: "sabudana-khichdi",
+      slug: "sabudana-khichdi",
+      description:
+        "A delicious vrat recipe made with premium Nivashree Sabudana, peanuts, spices and fresh ingredients.",
     },
-
     {
-      name: "Crispy Sabudana Vada",
-      image: vada,
-      time: "30 Minutes",
-      link: "sabudana-vada",
-    },
-
-    {
-      name: "Jeera Rice",
-      image: jeeraRice,
-      time: "25 Minutes",
-      link: "jeera-rice",
+      name: "Sabudana Kheer",
+      slug: "sabudana-kheer",
+      description:
+        "A traditional sweet recipe prepared with milk, dry fruits and premium quality sabudana.",
     },
   ];
 
-
   return (
-    <section className="min-h-screen bg-orange-50 py-24 px-6">
+    <section className="pt-32 min-h-screen bg-orange-50 px-6">
+      <div className="max-w-6xl mx-auto">
 
-      <div className="max-w-7xl mx-auto">
+        <h1 className="text-4xl font-bold text-green-700 text-center mb-8">
+          Nivashree Recipes
+        </h1>
 
+        <p className="text-center text-gray-600 mb-10 text-lg">
+          Discover delicious recipes made with Nivashree Premium Sabudana.
+        </p>
 
-        <div className="text-center">
+        <div className="grid md:grid-cols-2 gap-8">
 
-          <h1 className="text-5xl font-bold text-green-800">
-            Delicious Recipes
-          </h1>
-
-          <p className="mt-5 text-gray-600 text-lg">
-            Explore tasty recipes made with Nivashree premium ingredients.
-          </p>
-
-        </div>
-
-
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
-
-
-          {recipes.map((recipe,index)=>(
-
+          {recipes.map((recipe) => (
             <div
-              key={index}
-              className="bg-white rounded-3xl shadow-lg overflow-hidden hover:-translate-y-3 transition duration-300"
+              key={recipe.slug}
+              className="bg-white rounded-xl shadow-lg p-6"
             >
 
-              <img
-                src={recipe.image}
-                alt={recipe.name}
-                className="w-full h-64 object-cover"
-              />
+              <h2 className="text-2xl font-bold text-green-700 mb-3">
+                {recipe.name}
+              </h2>
 
+              <p className="text-gray-600 mb-5">
+                {recipe.description}
+              </p>
 
-              <div className="p-6">
-
-
-                <h2 className="text-2xl font-bold text-green-800">
-                  {recipe.name}
-                </h2>
-
-
-                <p className="mt-3 text-orange-600 font-semibold">
-                  ⏱ {recipe.time}
-                </p>
-
-
-                <Link
-                  to={`/recipes/${recipe.link}`}
-                  className="block mt-6 text-center bg-green-700 hover:bg-green-800 text-white py-3 rounded-full font-semibold"
-                >
-                  View Recipe →
-                </Link>
-
-
-              </div>
-
+              <Link
+                to={`/recipes/${recipe.slug}`}
+                className="inline-block bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700"
+              >
+                View Recipe
+              </Link>
 
             </div>
-
           ))}
-
 
         </div>
 
-
       </div>
-
     </section>
   );
 }
-
 
 export default Recipes;
