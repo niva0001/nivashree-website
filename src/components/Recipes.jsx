@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import recipes from "../data/recipes";
 
 function Recipes() {
@@ -38,9 +39,12 @@ function Recipes() {
                   {recipe.description}
                 </p>
 
-                <button className="mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition">
+                <Link
+                  to="/recipes"
+                  className="inline-block mt-6 bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full font-semibold transition"
+                >
                   View Recipe →
-                </button>
+                </Link>
 
               </div>
             </div>
