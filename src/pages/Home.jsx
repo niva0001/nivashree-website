@@ -6,7 +6,7 @@ import About from "../components/About";
 import Dealer from "../components/Dealer";
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
-
+import StructuredData from "../components/StructuredData";
 
 function Home() {
   return (
@@ -15,6 +15,8 @@ function Home() {
         title="Nivashree Masala | Premium Sabudana & Food Products"
         description="Nivashree Masala offers premium quality Sabudana, Jeera and authentic Indian food products made with quality and trust."
       />
+
+      <StructuredData />
 
       <Hero />
       <WhyChoose />
