@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { FaStore, FaChartLine, FaHandshake, FaTruck } from "react-icons/fa";
 
-
 function Dealer() {
 
   const benefits = [
@@ -27,13 +26,11 @@ function Dealer() {
     }
   ];
 
-
   return (
 
     <section id="dealer" className="py-24 bg-green-800 text-white">
 
       <div className="max-w-7xl mx-auto px-6">
-
 
         {/* Heading */}
 
@@ -59,33 +56,27 @@ function Dealer() {
             Grow With Us
           </p>
 
-
           <h2 className="mt-3 text-4xl md:text-5xl font-bold">
             Become a Nivashree Dealer
           </h2>
-
 
           <p className="mt-6 max-w-3xl mx-auto text-green-100 text-lg">
             Join our growing dealer network and bring premium-quality
             food products to customers across India.
           </p>
 
-
         </motion.div>
-
-
 
         {/* Benefits */}
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-14">
 
-
-          {benefits.map((item,index)=>(
+          {benefits.map((item, index) => (
 
             <motion.div
               key={index}
               whileHover={{
-                y:-8
+                y: -8
               }}
               className="bg-green-700 rounded-2xl p-6 text-center"
             >
@@ -94,114 +85,116 @@ function Dealer() {
                 {item.icon}
               </div>
 
-
               <h3 className="mt-4 text-xl font-bold">
                 {item.title}
               </h3>
-
 
               <p className="mt-3 text-green-100">
                 {item.text}
               </p>
 
-
             </motion.div>
 
           ))}
 
-
         </div>
 
+        {/* Dealer Form */} <motion.form
+  action="https://api.web3forms.com/submit"
+  method="POST"
+  initial={{
+    opacity: 0,
+    y: 50
+  }}
+  whileInView={{
+    opacity: 1,
+    y: 0
+  }}
+  transition={{
+    duration: 0.7
+  }}
+  viewport={{
+    once: true
+  }}
+  className="mt-16 bg-white rounded-3xl shadow-2xl p-10 max-w-4xl mx-auto"
+>
 
+  <input
+    type="hidden"
+    name="access_key"
+    value="c585134a-479e-45ee-be77-a2c5ce2385cc"
+  />
 
+  <input
+    type="hidden"
+    name="subject"
+    value="New Dealer Inquiry - Nivashree Masala"
+  />
 
-        {/* Dealer Form */}
+  <input
+    type="hidden"
+    name="from_name"
+    value="Nivashree Website"
+  />
 
-        <motion.div
+  <div className="grid md:grid-cols-2 gap-6">
 
-          initial={{
-            opacity:0,
-            y:50
-          }}
+    <input
+      type="text"
+      name="name"
+      placeholder="Full Name"
+      required
+      className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
+    />
 
-          whileInView={{
-            opacity:1,
-            y:0
-          }}
+    <input
+      type="text"
+      name="business"
+      placeholder="Business Name"
+      required
+      className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
+    />
 
-          transition={{
-            duration:0.7
-          }}
+    <input
+      type="tel"
+      name="phone"
+      placeholder="Phone Number"
+      required
+      className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
+    />
 
-          viewport={{
-            once:true
-          }}
+    <input
+      type="text"
+      name="city"
+      placeholder="City"
+      required
+      className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
+    />
 
-          className="mt-16 bg-white rounded-3xl shadow-2xl p-10 max-w-4xl mx-auto"
+  </div>
 
-        >
+  <textarea
+    rows="5"
+    name="message"
+    placeholder="Tell us about your business..."
+    required
+    className="mt-6 w-full border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
+  ></textarea>
 
+  <button
+    type="submit"
+    className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full font-semibold transition"
+  >
+    Send Inquiry
+  </button>
 
-          <div className="grid md:grid-cols-2 gap-6">
+</motion.form>
 
+</div>
 
-            <input
-              type="text"
-              placeholder="Full Name"
-              className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
-            />
-
-
-            <input
-              type="text"
-              placeholder="Business Name"
-              className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
-            />
-
-
-            <input
-              type="tel"
-              placeholder="Phone Number"
-              className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
-            />
-
-
-            <input
-              type="text"
-              placeholder="City"
-              className="border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
-            />
-
-
-          </div>
-
-
-
-          <textarea
-            rows="5"
-            placeholder="Tell us about your business..."
-            className="mt-6 w-full border rounded-xl px-5 py-4 outline-none focus:ring-2 focus:ring-green-600 text-gray-800"
-          ></textarea>
-
-
-
-          <button
-            className="mt-8 bg-orange-500 hover:bg-orange-600 text-white px-10 py-4 rounded-full font-semibold transition"
-          >
-            Send Inquiry
-          </button>
-
-
-
-        </motion.div>
-
-
-      </div>
-
-    </section>
+</section>
 
   );
 }
-
 
 export default Dealer;
