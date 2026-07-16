@@ -14,8 +14,9 @@ function Navbar() {
     { name: "Recipes", path: "/#recipes" },
     { name: "About", path: "/#about" },
     { name: "Dealer", path: "/#dealer" },
-    { name: "Contact", path: "/#contact" },
-  ];
+    { name: "FAQ", path: "/#faq" },      // ← Add this
+  { name: "Contact", path: "/#contact" },
+];
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-md shadow-md z-50">
