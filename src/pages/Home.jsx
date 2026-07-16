@@ -7,7 +7,7 @@ import Dealer from "../components/Dealer";
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
 import StructuredData from "../components/StructuredData";
-
+import FAQ from "../components/FAQ";
 function Home() {
   return (
     <>
@@ -24,7 +24,8 @@ function Home() {
       <Recipes />
       <About />
       <Dealer />
-      <Contact />
+      <FAQ />
+<Contact />
     </>
   );
 }
