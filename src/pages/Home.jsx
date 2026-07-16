@@ -4,19 +4,23 @@ import Products from "../components/Products";
 import Recipes from "../components/Recipes";
 import About from "../components/About";
 import Dealer from "../components/Dealer";
+import FAQ from "../components/FAQ";
 import Contact from "../components/Contact";
+
 import SEO from "../components/SEO";
 import StructuredData from "../components/StructuredData";
-import FAQ from "../components/FAQ";
+import FAQSchema from "../components/FAQSchema";
+
 function Home() {
   return (
     <>
       <SEO
         title="Nivashree Masala | Premium Sabudana & Food Products"
-        description="Nivashree Masala offers premium quality Sabudana, Jeera and authentic Indian food products made with quality and trust."
+        description="Nivashree Masala offers premium quality Sabudana, Jeera, Tej Patta, Nakuldana, Cutting Mishri and authentic Indian food products."
       />
 
       <StructuredData />
+      <FAQSchema />
 
       <Hero />
       <WhyChoose />
@@ -25,7 +29,7 @@ function Home() {
       <About />
       <Dealer />
       <FAQ />
-<Contact />
+      <Contact />
     </>
   );
 }
