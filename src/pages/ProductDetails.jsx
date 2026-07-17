@@ -5,7 +5,7 @@ import {
   FaPhoneAlt,
   FaStar,
 } from "react-icons/fa";
-
+import { Helmet } from "react-helmet-async";
 import products from "../data/products";
 
 function ProductDetails() {
@@ -32,106 +32,208 @@ function ProductDetails() {
     );
   }
 
+  const productUrl = `https://nivashreemasala.com/products/${product.slug}`;
+
+  const productSchema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: product.name,
+    description: product.description,
+    image: [product.image],
+    sku: product.slug,
+    category: "Indian Food Products",
+    brand: {
+      "@type": "Brand",
+      name: "Nivashree Masala",
+    },
+    offers: {
+      "@type": "Offer",
+      url: productUrl,
+      priceCurrency: "INR",
+      availability: "https://schema.org/InStock",
+      itemCondition: "https://schema.org/NewCondition",
+    },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://nivashreemasala.com",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Products",
+        item: "https://nivashreemasala.com/products",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: product.name,
+        item: productUrl,
+      },
+    ],
+  };
+
   return (
-    <section className="min-h-screen bg-gradient-to-b from-green-50 to-white py-16">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Back Button */}
-        <Link
-          to="/products"
-          className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-900"
-        >
-          <FaArrowLeft />
-          Back to Products
-        </Link>
+    <>
+      <Helmet>
+        <title>{`${product.name} | Nivashree Masala`}</title>
 
-        {/* Product */}
-        <div className="mt-10 bg-white rounded-3xl shadow-xl p-8 lg:p-12 grid lg:grid-cols-2 gap-12 items-center">
-          {/* Image */}
-          <div className="flex justify-center">
-            <img
-              src={product.image}
-              alt={product.name}
-              className="w-80 hover:scale-105 transition duration-300"
-            />
-          </div>
+        <meta
+          name="description"
+          content={product.description}
+        />
 
-          {/* Details */}
-          <div>
-            <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
-              {product.badge}
-            </span>
+        <link
+          rel="canonical"
+          href={productUrl}
+        />
 
-            <h1 className="text-5xl font-bold text-green-800 mt-5">
-              {product.name}
-            </h1>
+        <meta property="og:type" content="product" />
+        <meta property="og:title" content={product.name} />
+        <meta property="og:description" content={product.description} />
+        <meta property="og:url" content={productUrl} />
 
-            <div className="flex gap-1 text-yellow-500 mt-4">
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
-              <FaStar />
+        <meta
+          property="og:image"
+          content={product.image}
+        />
+
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+
+        <meta
+          name="twitter:title"
+          content={product.name}
+        />
+
+        <meta
+          name="twitter:description"
+          content={product.description}
+        />
+
+        <meta
+          name="twitter:image"
+          content={product.image}
+        />
+
+        <script type="application/ld+json">
+          {JSON.stringify(productSchema)}
+        </script>
+
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
+      </Helmet>
+
+      <section className="min-h-screen bg-gradient-to-b from-green-50 to-white py-16">
+        <div className="max-w-7xl mx-auto px-6">
+
+          <Link
+            to="/products"
+            className="inline-flex items-center gap-2 text-green-700 font-semibold hover:text-green-900"
+          >
+            <FaArrowLeft />
+            Back to Products
+          </Link>
+
+          <div className="mt-10 bg-white rounded-3xl shadow-xl p-8 lg:p-12 grid lg:grid-cols-2 gap-12 items-center">
+
+            {/* Image */}
+                        <div className="flex justify-center">
+              <img
+                src={product.image}
+                alt={product.name}
+                className="w-80 hover:scale-105 transition duration-300"
+              />
             </div>
 
-            <p className="text-gray-600 mt-6 leading-8 text-lg">
-              {product.description}
-            </p>
+            {/* Details */}
+            <div>
+              <span className="bg-orange-500 text-white px-4 py-2 rounded-full text-sm font-semibold">
+                {product.badge}
+              </span>
 
-            {/* Pack Sizes */}
-            <div className="mt-8">
-              <h3 className="font-bold text-xl text-green-800">
-                Available Pack Sizes
-              </h3>
+              <h1 className="text-5xl font-bold text-green-800 mt-5">
+                {product.name}
+              </h1>
 
-              <div className="flex flex-wrap gap-4 mt-4">
-                {product.sizes.map((size, index) => (
-                  <span
-                    key={index}
-                    className="bg-green-100 text-green-700 px-5 py-2 rounded-full font-semibold"
-                  >
-                    {size}
-                  </span>
-                ))}
+              <div className="flex gap-1 text-yellow-500 mt-4">
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
+                <FaStar />
               </div>
-            </div>
 
-            {/* Features */}
-            <div className="mt-8">
-              <h3 className="font-bold text-xl text-green-800">
-                Why Choose Nivashree?
-              </h3>
+              <p className="text-gray-600 mt-6 leading-8 text-lg">
+                {product.description}
+              </p>
 
-              <ul className="mt-4 space-y-3 text-gray-700">
-                {product.features.map((feature, index) => (
-                  <li key={index}>✔ {feature}</li>
-                ))}
-              </ul>
-            </div>
+              {/* Pack Sizes */}
+              <div className="mt-8">
+                <h3 className="font-bold text-xl text-green-800">
+                  Available Pack Sizes
+                </h3>
 
-            {/* Buttons */}
-            <div className="mt-10 flex flex-wrap gap-4">
-              <a
-                href="https://wa.me/918227885546"
-                target="_blank"
-                rel="noreferrer"
-                className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full flex items-center gap-2 font-semibold"
-              >
-                <FaWhatsapp />
-                WhatsApp
-              </a>
+                <div className="flex flex-wrap gap-4 mt-4">
+                  {product.sizes.map((size, index) => (
+                    <span
+                      key={index}
+                      className="bg-green-100 text-green-700 px-5 py-2 rounded-full font-semibold"
+                    >
+                      {size}
+                    </span>
+                  ))}
+                </div>
+              </div>
 
-              <a
-                href="tel:+918227885546"
-                className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center gap-2 font-semibold"
-              >
-                <FaPhoneAlt />
-                Call Now
-              </a>
+              {/* Features */}
+              <div className="mt-8">
+                <h3 className="font-bold text-xl text-green-800">
+                  Why Choose Nivashree?
+                </h3>
+
+                <ul className="mt-4 space-y-3 text-gray-700">
+                  {product.features.map((feature, index) => (
+                    <li key={index}>✔ {feature}</li>
+                  ))}
+                </ul>
+              </div>
+
+              {/* Buttons */}
+              <div className="mt-10 flex flex-wrap gap-4">
+                <a
+                  href="https://wa.me/918227885546"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-full flex items-center gap-2 font-semibold"
+                >
+                  <FaWhatsapp />
+                  WhatsApp
+                </a>
+
+                <a
+                  href="tel:+918227885546"
+                  className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-full flex items-center gap-2 font-semibold"
+                >
+                  <FaPhoneAlt />
+                  Call Now
+                </a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
