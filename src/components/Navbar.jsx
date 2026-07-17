@@ -9,7 +9,7 @@ function Navbar() {
   const [open, setOpen] = useState(false);
 
   const menuItems = [
-    { name: "Home", path: "/" },
+    { name: "Home", path: "/#home" },
     { name: "Products", path: "/#products" },
     { name: "Recipes", path: "/#recipes" },
     { name: "About", path: "/#about" },
